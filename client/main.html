@@ -1,0 +1,68 @@
+<head>
+	<title>ImgDB</title>
+</head>
+
+<body>
+	<h1>Images Database</h1>
+	{{#if signedIn}}
+		{{> mainPage}}
+	{{else}}
+		{{> signIn}}
+	{{/if}}
+</body>
+
+<template name="signIn">
+	<p>Username</p>
+	<input type="text" id="uname"/> <br/>
+	<p>Password</p>
+	<input type="password" id="pword"/> <br/>
+	<button id="signButton"> Sign in </button>
+</template>
+
+<template name="mainPage">
+	<h2>Data Sets</h2>
+	{{> reactiveTable settings=DSettings}}
+	<br/>
+	<button id="addDS">Add Data Set</button>
+	{{#if selectedSet}}
+		<button id="viewDS">View Data Set</button>
+		<button id="deleteDS">Delete Data Set</button>
+	{{/if}}
+	{{#if addingSet}}
+		<br/><br/>
+		name: <input type="text" id="dsName"/>
+		source: <input type="text" id="dsSource"/>
+		type: <input type="text" id="dsType"/>
+		<br/><br/>
+		<button id="confirmAddDS"> Add </button>
+	{{/if}}
+	{{#if viewingSet}}
+		<br/><br/><br/>
+		{{> reactiveTable settings=IMSettings}}
+		<br/>
+		<button id="addImg"> Add Image </button>
+		{{#if selectedImage}}
+			{{#each specificImage}}
+				<button id="downloadImg">
+					<a href={{dlLink}} download> Download Image </a>
+				</button>
+			{{/each}}
+			<button id="deleteImg"> Delete Image </button>
+		{{/if}}
+		{{#if addingImg}}
+			<br/><br/>
+			id: <input type="text" id="imgId"/> <br/>
+			clat: <input type="text" id="imgClat"/>
+			clong: <input type="text" id="imgClong"/>
+			altitude: <input type="text" id="imgAlt"/> <br/>
+			slat: <input type="text" id="imgSlat"/>
+			slong: <input type="text" id="imgSlong"/> <br/>
+			month: <input type="text" id="imgMonth"/>
+			cloudID: <input type="text" id="imgCloudID"/> <br/>
+			metadata: <input type="text" id="imgMetadata"/> <br/>
+			Upload Image: <input type="file" id="imgImage" accept="image/*">
+			<br/> <br/>
+			<button id="confirmAddImg"> Add </button>
+		{{/if}}
+	{{/if}}
+</template>

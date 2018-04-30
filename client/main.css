@@ -1,0 +1,45 @@
+/* CSS declarations go here */
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+	text-align: center;
+}
+
+#reactive-table-1 {
+	width: 80%;
+}
+
+tr:hover {
+	background-color: #ededed;
+}
+
+.name {
+	width: 5% !important;
+}
+
+.source {
+	width: 5% !important;
+}
+
+.type {
+	width: 5% !important;
+}
+
+.sortable{
+	width: 7%;
+}
+
+thead tr:hover {
+	background-color: #ffffff!important;
+}
+
+.reactive-table-filter{
+	float: none;
+}
+
+.selectedRow{
+	background-color: #cccccc !important;
+}
